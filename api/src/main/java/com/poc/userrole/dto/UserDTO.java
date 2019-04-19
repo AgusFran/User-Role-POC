@@ -5,15 +5,16 @@ import java.io.Serializable;
 public class UserDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private String id;
+    private int id;
     private String username;
     private String password;
+    private RoleDTO role;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -32,4 +33,13 @@ public class UserDTO implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public RoleDTO getRole() {
+        return role;
+    }
+
+    public void setRole(RoleDTO role) {
+        this.role = role;
+    }
+
 }
