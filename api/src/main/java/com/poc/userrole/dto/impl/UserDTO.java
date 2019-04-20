@@ -1,8 +1,8 @@
-package com.poc.userrole.dto;
+package com.poc.userrole.dto.impl;
 
-import java.io.Serializable;
+import com.poc.userrole.dto.BaseDTO;
 
-public class UserDTO implements Serializable {
+public class UserDTO implements BaseDTO {
     private static final long serialVersionUID = 1L;
 
     private int id;

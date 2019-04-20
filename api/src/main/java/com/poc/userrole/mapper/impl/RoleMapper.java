@@ -1,14 +1,17 @@
-package com.poc.userrole.mapper;
+package com.poc.userrole.mapper.impl;
 
 import org.springframework.stereotype.Component;
 
-import com.poc.userrole.domain.Roles;
-import com.poc.userrole.dto.RoleDTO;
+import com.poc.userrole.domain.impl.Roles;
+import com.poc.userrole.dto.impl.RoleDTO;
+import com.poc.userrole.mapper.GenericMapper;
 
 @Component
-public class RoleMapper {
+public class RoleMapper implements GenericMapper<RoleDTO, Roles> {
 
     public RoleDTO toDTO(Roles domain) {
+        if (domain == null)
+            return null;
         RoleDTO dto = new RoleDTO();
 
         dto.setId(domain.getId());
@@ -18,6 +21,9 @@ public class RoleMapper {
     }
 
     public Roles toDomain(RoleDTO dto) {
+        if (dto == null)
+            return null;
+
         Roles domain = new Roles();
 
         domain.setId(dto.getId());

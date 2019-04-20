@@ -1,4 +1,4 @@
-package com.poc.userrole.domain;
+package com.poc.userrole.domain.impl;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,22 +7,26 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.poc.userrole.domain.BaseDomain;
+
 @Entity
-public class Users {
+public class Users implements BaseDomain {
 
     @Id
     @Column
     private int id;
-    
+
     @Column
     private String username;
-    
+
     @Column
     private String pass;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "roleId")
     private Roles role;
+
+    private boolean erased;
 
     public int getId() {
         return id;
@@ -55,5 +59,13 @@ public class Users {
     public void setRole(Roles role) {
         this.role = role;
     }
-    
+
+    public boolean isErased() {
+        return erased;
+    }
+
+    public void setErased(boolean erased) {
+        this.erased = erased;
+    }
+
 }

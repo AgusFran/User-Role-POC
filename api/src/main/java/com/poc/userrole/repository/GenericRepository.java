@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.NoRepositoryBean;
 
 @NoRepositoryBean
-public interface BaseRepository<E, P extends Serializable> extends JpaRepository<E, P>, JpaSpecificationExecutor<E> {
+public interface GenericRepository<E, P extends Serializable> extends JpaRepository<E, P>, JpaSpecificationExecutor<E> {
 }
