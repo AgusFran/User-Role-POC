@@ -1,0 +1,12 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<nav class="nav">
+  <div
+    class="button-gen"
+    *ngFor="let item of sections"
+    [routerLink]="['/', item]"
+    routerLinkActive="router-link-active"
+  >
+    {{ item }}
+  </div>
+</nav>
+<router-outlet></router-outlet>

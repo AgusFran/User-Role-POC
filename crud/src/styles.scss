@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css?family=Ubuntu:400,500,700");
+$background-color: rgb(112, 128, 144);
+$background-light: rgb(142, 153, 243);
+$font-color: rgb(149, 181, 218);
+
+body {
+  margin: 0;
+}
+
+.nav {
+  width: 100%;
+  padding: 0;
+  background-color: $background-color;
+  box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+.button-gen {
+  display: inline-block;
+  width: auto;
+  height: 100%;
+  text-align: center;
+  line-height: 100%;
+  font-size: 32px;
+  text-transform: uppercase;
+  font-family: "Ubuntu", sans-serif;
+  padding: 8px;
+  color: $font-color;
+  background-color: inherit;
+  &:hover {
+    opacity: 0.5;
+  }
+}
