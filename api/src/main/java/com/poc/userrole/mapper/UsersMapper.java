@@ -26,7 +26,7 @@ public class UsersMapper {
         dto.setPassword(domain.getPass());
         dto.setUsername(domain.getUsername());
 
-        dto.setRole(mapper.toDTO(domain.getRole()));
+        dto.setRole(mapper.toDTO(domain.getRoleId()));
         
         return dto;
     }

@@ -1,28 +1,24 @@
 package com.poc.userrole.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
+@Table
 public class Users {
 
     @Id
-    @Column
+    @Column(name = "id")
     private int id;
     
-    @Column
+    @Column(name = "username")
     private String username;
     
-    @Column
+    @Column(name = "password")
     private String pass;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "roleId")
-    private Roles role;
+    private Roles roleId;
 
     public int getId() {
         return id;
@@ -48,12 +44,12 @@ public class Users {
         this.pass = pass;
     }
 
-    public Roles getRole() {
-        return role;
+    public Roles getRoleId() {
+        return roleId;
     }
 
-    public void setRole(Roles role) {
-        this.role = role;
+    public void setRoleId(Roles roleId) {
+        this.roleId = roleId;
     }
     
 }

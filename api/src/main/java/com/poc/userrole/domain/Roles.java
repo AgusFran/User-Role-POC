@@ -3,15 +3,17 @@ package com.poc.userrole.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Roles")
 public class Roles {
 
     @Id
-    @Column
+    @Column(name = "id")
     private int id;
 
-    @Column
+    @Column(name = "description")
     private String description;
 
     public int getId() {
