@@ -1,7 +1,10 @@
-package com.poc.userrole.dto;
+package com.poc.userrole.dto.impl;
 
-public class RoleDTO {
+import com.poc.userrole.dto.BaseDTO;
 
+public class RoleDTO implements BaseDTO {
+    private static final long serialVersionUID = 1L;
+    
     private int id;
     private String description;
 
