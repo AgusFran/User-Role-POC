@@ -25,16 +25,21 @@ body {
   width: auto;
   height: 100%;
   text-align: center;
-  line-height: 100%;
   font-size: 32px;
   text-transform: uppercase;
   padding: 8px;
   color: $font-color;
   background-color: inherit;
   cursor: pointer;
+  border: none;
   &:hover {
     opacity: 0.5;
   }
+}
+
+.button-gen-sm {
+  @extend .button-gen;
+  font-size: 18px;
 }
 
 .registry {
@@ -45,11 +50,4 @@ body {
     display: inline-block;
     flex-grow: 1;
   }
-}
-
-.footer {
-  display: block;
-  position: absolute;
-  bottom: 0;
-  background-color: $background-color;
 }
