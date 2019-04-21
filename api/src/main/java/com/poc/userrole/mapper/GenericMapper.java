@@ -5,7 +5,7 @@ import com.poc.userrole.dto.BaseDTO;
 
 public interface GenericMapper<D extends BaseDTO, E extends BaseDomain> {
 
-    public E toDomain(D dto);
-    public D toDTO(E domain);
+    E toDomain(D dto);
+    D toDTO(E domain);
 
 }
