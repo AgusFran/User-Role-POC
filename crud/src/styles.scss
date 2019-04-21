@@ -1,11 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css?family=Ubuntu:400,500,700");
-$background-color: rgb(112, 128, 144);
-$background-light: rgb(142, 153, 243);
-$font-color: rgb(149, 181, 218);
+$background-color: rgb(37, 48, 54);
+$background-light: rgb(79, 91, 98);
+$font-color: rgb(255, 255, 255);
 
 body {
   margin: 0;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.paddingful {
+  padding: 8px;
 }
 
 .nav {
@@ -23,11 +28,28 @@ body {
   line-height: 100%;
   font-size: 32px;
   text-transform: uppercase;
-  font-family: "Ubuntu", sans-serif;
   padding: 8px;
   color: $font-color;
   background-color: inherit;
+  cursor: pointer;
   &:hover {
     opacity: 0.5;
   }
+}
+
+.registry {
+  display: flex;
+  width: 100%;
+  border-top: 1px black solid;
+  > * {
+    display: inline-block;
+    flex-grow: 1;
+  }
+}
+
+.footer {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  background-color: $background-color;
 }

@@ -1,3 +1,15 @@
-<p>
-  users works!
-</p>
+<div class="paddingful">
+  Users:
+  <ng-container *ngFor="let user of users">
+    <div class="registry">
+      <div>Username: {{ user.username }}</div>
+      <div>Password: {{ user.password }}</div>
+      <ng-container *ngFor="let role of user.roles">Role: {{ role.description }}</ng-container>
+    </div>
+  </ng-container>
+  <footer class="footer">
+    <button>agregar</button>
+    <button>modificar</button>
+    <button>eliminar</button>
+  </footer>
+</div>
