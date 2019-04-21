@@ -1,15 +1,14 @@
 package com.poc.userrole.service;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.poc.userrole.domain.BaseDomain;
 import com.poc.userrole.dto.BaseDTO;
 import com.poc.userrole.mapper.GenericMapper;
 import com.poc.userrole.repository.GenericRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class GenericCrudService<D extends BaseDTO, E extends BaseDomain, PK extends Serializable> {
 
@@ -17,6 +16,10 @@ public abstract class GenericCrudService<D extends BaseDTO, E extends BaseDomain
     private GenericMapper<D, E> mapper;
 
     public void createOrUpdate(D dto) {
+        repo.save(mapper.toDomain(dto));
+    }
+
+    public void create(D dto) {
         repo.save(mapper.toDomain(dto));
     }
 
