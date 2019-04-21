@@ -22,7 +22,7 @@ public class Users implements BaseDomain {
     private String username;
 
     @Column
-    private String pass;
+    private String password;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "roleId")
@@ -46,12 +46,12 @@ public class Users implements BaseDomain {
         this.username = username;
     }
 
-    public String getPass() {
-        return pass;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Roles getRole() {

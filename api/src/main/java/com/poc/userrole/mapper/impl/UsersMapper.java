@@ -19,7 +19,7 @@ public class UsersMapper implements GenericMapper<UserDTO, Users> {
         Users domain = new Users();
 
         domain.setId(dto.getId());
-        domain.setPass(dto.getPassword());
+        domain.setPassword(dto.getPassword());
         domain.setUsername(dto.getUsername());
 
         return domain;
@@ -32,7 +32,7 @@ public class UsersMapper implements GenericMapper<UserDTO, Users> {
         UserDTO dto = new UserDTO();
 
         dto.setId(domain.getId());
-        dto.setPassword(domain.getPass());
+        dto.setPassword(domain.getPassword());
         dto.setUsername(domain.getUsername());
         dto.setRole(mapper.toDTO(domain.getRole()));
 
