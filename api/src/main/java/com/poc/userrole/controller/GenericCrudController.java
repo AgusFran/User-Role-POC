@@ -1,23 +1,22 @@
 package com.poc.userrole.controller;
 
-import java.io.Serializable;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
 import com.poc.userrole.domain.BaseDomain;
 import com.poc.userrole.dto.BaseDTO;
 import com.poc.userrole.service.GenericCrudService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.io.Serializable;
+import java.util.List;
 
 public abstract class GenericCrudController<D extends BaseDTO, E extends BaseDomain, PK extends Serializable> {
 
     private GenericCrudService<D, E, PK> crudService;
+
+    public GenericCrudController(GenericCrudService<D, E, PK> crudService) {
+        this.crudService = crudService;
+    }
 
     @PutMapping
     public void update(@RequestBody D dto) {
@@ -30,7 +29,7 @@ public abstract class GenericCrudController<D extends BaseDTO, E extends BaseDom
     }
 
     @GetMapping
-    public List<D> readAll() {
+    public List<?> readAll() {
         return this.crudService.readAll();
     }
 
@@ -47,5 +46,9 @@ public abstract class GenericCrudController<D extends BaseDTO, E extends BaseDom
     @Autowired
     public void setService(GenericCrudService<D, E, PK> service) {
         this.crudService = service;
+    }
+
+    public GenericCrudService<D, E, PK> getService() {
+        return crudService;
     }
 }

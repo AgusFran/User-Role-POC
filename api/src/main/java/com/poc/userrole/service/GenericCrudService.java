@@ -4,23 +4,29 @@ import com.poc.userrole.domain.BaseDomain;
 import com.poc.userrole.dto.BaseDTO;
 import com.poc.userrole.mapper.GenericMapper;
 import com.poc.userrole.repository.GenericRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@Transactional
 public abstract class GenericCrudService<D extends BaseDTO, E extends BaseDomain, PK extends Serializable> {
 
-    private GenericRepository<E, PK> repo;
-    private GenericMapper<D, E> mapper;
+    protected GenericRepository<E, PK> repository;
+    protected GenericMapper<D, E> mapper;
+
+    public GenericCrudService(GenericRepository<E, PK> repository, GenericMapper<D, E> mapper) {
+        this.repository = repository;
+        this.mapper = mapper;
+    }
 
     public void createOrUpdate(D dto) {
-        repo.save(mapper.toDomain(dto));
+        repository.save(mapper.toDomain(dto));
     }
 
     public void create(D dto) {
-        repo.save(mapper.toDomain(dto));
+        repository.save(mapper.toDomain(dto));
     }
 
     public void createAll(List<D> dtos) {
@@ -28,23 +34,23 @@ public abstract class GenericCrudService<D extends BaseDTO, E extends BaseDomain
 
         dtos.forEach(one -> all.add(mapper.toDomain(one)));
 
-        repo.saveAll(all);
+        repository.saveAll(all);
     }
 
     public D read(PK id) {
-        return mapper.toDTO(repo.findById(id).orElse(null));
+        return mapper.toDTO(repository.findById(id).orElse(null));
     }
 
     public List<D> readAll() {
         List<D> all = new ArrayList<>();
 
-        repo.findAll().forEach(one -> all.add(mapper.toDTO(one)));
+        repository.findAll().forEach(one -> all.add(mapper.toDTO(one)));
 
         return all;
     }
 
     public boolean delete(PK id) {
-        E domain = repo.findById(id).orElse(null);
+        E domain = repository.findById(id).orElse(null);
 
         if (domain == null) {
             return false;
@@ -52,19 +58,17 @@ public abstract class GenericCrudService<D extends BaseDTO, E extends BaseDomain
 
         domain.setErased(true);
 
-        repo.save(domain);
+        repository.save(domain);
 
         return true;
     }
 
-    @Autowired
-    public void setRepo(GenericRepository<E, PK> repo) {
-        this.repo = repo;
+    public GenericMapper<D, E> getMapper() {
+        return mapper;
     }
 
-    @Autowired
-    public void setMapper(GenericMapper<D, E> mapper) {
-        this.mapper = mapper;
+    public GenericRepository<E, PK> getRepository() {
+        return repository;
     }
 
 }
