@@ -3,6 +3,7 @@ package com.poc.userrole.configuration;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.poc.userrole.dto.impl.CredentialsDTO;
 import com.poc.userrole.dto.impl.UserDTO;
+import com.poc.userrole.dto.impl.AuthRequestDTO;
 import com.poc.userrole.helper.Constants;
 import com.poc.userrole.service.impl.UserService;
 import io.jsonwebtoken.Jwts;
@@ -35,7 +36,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try {
-            UserDTO user = new ObjectMapper().readValue(request.getInputStream(), UserDTO.class);
+            AuthRequestDTO user = new ObjectMapper().readValue(request.getInputStream(), AuthRequestDTO.class);
 
             return this.getAuthenticationManager().authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword(), new ArrayList<>()));
         } catch (IOException e) {
@@ -51,7 +52,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .setIssuedAt(new Date())
                 .claim("userID", credentials.getUser().getId())
                 .setSubject(credentials.getUsername())
-                .signWith(SignatureAlgorithm.HS512, new SecretKeySpec(DatatypeConverter.parseBase64Binary(Constants.SIGN_KEY), SignatureAlgorithm.HS512.getJcaName())).compact();
+                .signWith(SignatureAlgorithm.HS512, new SecretKeySpec(DatatypeConverter.parseBase64Binary(Constants.SIGN_KEY), SignatureAlgorithm.HS512.getJcaName()))
+                .compact();
 
         response.addHeader(HttpHeaders.AUTHORIZATION, "Bearer" + " " + token);
 

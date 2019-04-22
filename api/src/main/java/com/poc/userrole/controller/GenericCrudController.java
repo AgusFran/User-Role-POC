@@ -4,7 +4,6 @@ import com.poc.userrole.domain.BaseDomain;
 import com.poc.userrole.dto.BaseDTO;
 import com.poc.userrole.service.GenericCrudService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.Serializable;
@@ -29,7 +28,7 @@ public abstract class GenericCrudController<D extends BaseDTO, E extends BaseDom
     }
 
     @GetMapping
-    public List<?> readAll() {
+    public List<D> readAll() {
         return this.crudService.readAll();
     }
 

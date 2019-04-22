@@ -2,7 +2,6 @@ package com.poc.userrole.mapper.impl;
 
 import com.poc.userrole.domain.impl.Users;
 import com.poc.userrole.dto.impl.UserDTO;
-import com.poc.userrole.dto.impl.UserResponseDTO;
 import com.poc.userrole.mapper.GenericMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -37,19 +36,6 @@ public class UsersMapper implements GenericMapper<UserDTO, Users> {
         dto.setPassword(domain.getPassword());
         dto.setUsername(domain.getUsername());
         dto.setToken(domain.getAuthToken());
-        dto.setRole(mapper.toDTO(domain.getRole()));
-
-        return dto;
-    }
-
-    public UserResponseDTO toResponse(Users domain) {
-        if (domain == null)
-            return null;
-
-        UserResponseDTO dto = new UserResponseDTO();
-
-        dto.setId(domain.getId());
-        dto.setUsername(domain.getUsername());
         dto.setRole(mapper.toDTO(domain.getRole()));
 
         return dto;

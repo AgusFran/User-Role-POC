@@ -1,5 +1,6 @@
 package com.poc.userrole.dto.impl;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.poc.userrole.dto.BaseDTO;
 
 public class UserDTO implements BaseDTO {
@@ -7,10 +8,13 @@ public class UserDTO implements BaseDTO {
 
     private int id;
     private String username;
-    private String password;
-    private String token;
     private boolean erased;
     private RoleDTO role;
+
+    @JsonIgnore
+    private String password;
+    @JsonIgnore
+    private String token;
 
 
     public int getId() {

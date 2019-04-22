@@ -1,0 +1,28 @@
+<mat-card class="login-card">
+  <mat-card-header class="login-title">
+    <mat-card-title>Welcome</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form id="form_login" class="login-form" (ngSubmit)="login()" autocomplete="off">
+      <mat-form-field appearance="outline" class="field-full-width">
+        <input matInput placeholder="Username" [(ngModel)]="username" name="username" required />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="field-full-width">
+        <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required />
+      </mat-form-field>
+    </form>
+    <div class="centered-container">
+      <mat-spinner [style.display]="loading ? 'block' : 'none'" [diameter]="48"></mat-spinner>
+      <button
+        [style.display]="loading ? 'none' : 'block'"
+        class="submit-button"
+        mat-raised-button
+        form="form_login"
+        type="submit"
+        color="primary"
+      >
+        Log in
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

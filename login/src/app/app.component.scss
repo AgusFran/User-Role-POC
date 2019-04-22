@@ -1,0 +1,32 @@
+.login-card {
+  width: 400px;
+  margin: 100px auto 0 auto;
+}
+
+.field-full-width {
+  display: block;
+}
+
+.login-title {
+  display: block;
+  margin: 0 auto 16px auto;
+  width: 100px;
+  text-align: center;
+  padding-right: 8px;
+}
+
+.centered-container {
+  display: block;
+  margin: auto;
+  width: 100px;
+  mat-spinner {
+    margin: auto;
+  }
+}
+
+.submit-button {
+  display: block;
+  margin: auto;
+  width: 100px;
+  text-transform: uppercase;
+}

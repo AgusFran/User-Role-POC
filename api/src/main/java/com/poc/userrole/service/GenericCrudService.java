@@ -4,6 +4,7 @@ import com.poc.userrole.domain.BaseDomain;
 import com.poc.userrole.dto.BaseDTO;
 import com.poc.userrole.mapper.GenericMapper;
 import com.poc.userrole.repository.GenericRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
@@ -13,13 +14,8 @@ import java.util.List;
 @Transactional
 public abstract class GenericCrudService<D extends BaseDTO, E extends BaseDomain, PK extends Serializable> {
 
-    protected GenericRepository<E, PK> repository;
     protected GenericMapper<D, E> mapper;
-
-    public GenericCrudService(GenericRepository<E, PK> repository, GenericMapper<D, E> mapper) {
-        this.repository = repository;
-        this.mapper = mapper;
-    }
+    protected GenericRepository<E, PK> repository;
 
     public void createOrUpdate(D dto) {
         repository.save(mapper.toDomain(dto));
@@ -63,12 +59,14 @@ public abstract class GenericCrudService<D extends BaseDTO, E extends BaseDomain
         return true;
     }
 
-    public GenericMapper<D, E> getMapper() {
-        return mapper;
+    @Autowired
+    public void setMapper(GenericMapper<D, E> mapper) {
+        this.mapper = mapper;
     }
 
-    public GenericRepository<E, PK> getRepository() {
-        return repository;
+    @Autowired
+    public void setRepository(GenericRepository<E, PK> repository) {
+        this.repository = repository;
     }
 
 }
