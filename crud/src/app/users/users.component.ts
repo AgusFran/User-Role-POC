@@ -10,12 +10,12 @@ import { Role } from "src/classes/role";
 })
 export class UsersComponent implements OnInit {
   users: User[];
+  displayedColumns: string[] = ["username", "roles"];
 
   constructor(private service: UsersService) {
-    let roles: Role[] = [new Role("admin")];
+    let roles: Role[] = [new Role("admin"), new Role("admin")];
 
     this.users = [new User("Asd", "asd", roles), new User("das", "das", roles)];
-    // service.getUsers().subscribe(response => (this.users = response));
   }
 
   ngOnInit() {}

@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css?family=Ubuntu:400,500,700");
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
 $background-color: rgb(37, 48, 54);
 $background-light: rgb(79, 91, 98);
 $font-color: rgb(255, 255, 255);
@@ -7,6 +9,10 @@ $font-color: rgb(255, 255, 255);
 body {
   margin: 0;
   font-family: "Ubuntu", sans-serif;
+}
+
+table {
+  width: 100%;
 }
 
 .paddingful {
@@ -40,14 +46,4 @@ body {
 .button-gen-sm {
   @extend .button-gen;
   font-size: 18px;
-}
-
-.registry {
-  display: flex;
-  width: 100%;
-  border-top: 1px black solid;
-  > * {
-    display: inline-block;
-    flex-grow: 1;
-  }
 }
