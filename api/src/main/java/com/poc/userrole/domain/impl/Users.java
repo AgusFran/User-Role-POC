@@ -1,14 +1,9 @@
 package com.poc.userrole.domain.impl;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import com.poc.userrole.domain.BaseDomain;
+
+import javax.persistence.*;
 
 @Entity
 public class Users implements BaseDomain {
@@ -28,7 +23,11 @@ public class Users implements BaseDomain {
     @JoinColumn(name = "roleId")
     private Roles role;
 
+    @Column(name = "authToken")
+    private String authToken;
+
     private boolean erased;
+
 
     public int getId() {
         return id;
@@ -60,6 +59,14 @@ public class Users implements BaseDomain {
 
     public void setRole(Roles role) {
         this.role = role;
+    }
+
+    public String getAuthToken() {
+        return authToken;
+    }
+
+    public void setAuthToken(String authToken) {
+        this.authToken = authToken;
     }
 
     public boolean isErased() {

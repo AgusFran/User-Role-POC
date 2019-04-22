@@ -1,6 +1,7 @@
 package com.poc.userrole.service.impl;
 
 import com.poc.userrole.domain.impl.Users;
+import com.poc.userrole.dto.impl.CredentialsDTO;
 import com.poc.userrole.repository.impl.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -30,11 +31,12 @@ public class CredentialsService implements UserDetailsService {
 
         grantedAuthorities.add(new SimpleGrantedAuthority(user.getRole().getDescription()));
 
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
+        return new CredentialsDTO(user, grantedAuthorities);
     }
 
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
 }

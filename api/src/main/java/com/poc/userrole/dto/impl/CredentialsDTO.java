@@ -1,24 +1,27 @@
 package com.poc.userrole.dto.impl;
 
-public class CredentialsDTO {
+import com.poc.userrole.domain.impl.Users;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 
-    private String username;
-    private String password;
+import java.util.Set;
 
-    public String getUsername() {
-        return username;
+public class CredentialsDTO extends User {
+
+    private Users user;
+
+    public CredentialsDTO(Users users, Set<GrantedAuthority> grantedAuthorities) {
+        super(users.getUsername(), users.getPassword(), grantedAuthorities);
+
+        this.user = users;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public Users getUser() {
+        return user;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUser(Users user) {
+        this.user = user;
     }
 
 }
